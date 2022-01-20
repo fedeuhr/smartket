@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+{% load tailwind_filters %}
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+
+<div class="text-center">
+    <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+        Perfíl de {{user.username}}
+    </h2>
+</div>
+<form class="form-horizontal dark:text-dark-txt" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="bg-white-200 min-h-screen pt-2">
+        <div class="container mx-auto">
+            <div class="inputs w-full max-w-2xl p-6 mx-auto">
+                <div class="flex justify-center">
+                    <img class="rounded-lg w-48 h-48" src="{{user.profile.picture.url}}"
+                        onerror="this.onerror=null; this.src='../../media/user/default_user.jpg'" alt="" />
+                </div>
+                <div class="text-center my-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Subir foto de
+                        Perfíl</label>
+                    {{form.picture}}
+                </div>
+                <form class="mt-6 border-t border-gray-400 pt-4">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="grid-text-1">Dirección de Email</label>
+                            <label class="block tracking-wide text-gray-500 text-xs font-bold mb-2"
+                                for="grid-text-1">{{user.email}}</label>
+                            {{form.email}}
+                        </div>
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label
+                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Contraseña</label>
+                            <button onclick="location.href='{% url 'account_reset_password' %}'" type="button"
+                                class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md">
+                                Cambiar contraseña
+                            </button>
+                        </div>
+                        <div class="personal w-full border-t border-gray-400 pt-4">
+                            <h2 class="text-2xl text-gray-900">Información Personal:</h2>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="w-full md:w-1/2 px-3 mb-6">
+                                    <label
+                                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Nombre</label>
+                                    <label
+                                        class="block uppercase tracking-wide text-gray-500 text-xs font-normal mb-2">Actual:
+                                        {{user.first_name}}</label>
+                                    {{form.first_name}}
+                                </div>
+                                <div class="w-full md:w-1/2 px-3 mb-6">
+                                    <label
+                                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Apellido</label>
+                                    <label
+                                        class="block uppercase tracking-wide text-gray-500 text-xs font-normal mb-2">Actual:
+                                        {{user.last_name}}</label>
+                                    {{form.last_name}}
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button
+                                    class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3"
+                                    type="submit">
+                                    Guardar Cambios
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}
+{% block javascript %}
+{% endblock javascript %}

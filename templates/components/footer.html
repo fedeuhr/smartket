@@ -1,0 +1,85 @@
+{% load static %}
+{% url 'home' as home %}
+{% url 'product-list' as productlist %}
+
+<footer class="py-6 w-full text-white bg-blue-500">
+	<div class="container px-6 mx-auto space-y-6 divide-y divide-coolGray-400 md:space-y-12 divide-opacity-50">
+		<div class="grid grid-cols-12">
+			<div class="pb-6 col-span-full md:pb-0 md:col-span-6">
+				<div class="flex justify-center space-x-3 md:justify-start">
+					<div class="flex items-center justify-center w-40 h-40">
+						<img class="flex-shrink-0 w-40" src="{% static 'logo_white.png' %}" alt="Smarket">
+					</div>
+				</div>
+			</div>
+			{% if user.is_authenticated %}
+			<div class="col-span-6 text-center md:text-left md:col-span-3 mt-8">
+				<p class="pb-1 text-lg font-medium">Usuario</p>
+				<ul>
+					<li>
+						<a href="{% url 'users:profile' user.username %}" class="hover:dark:text-gray-400">Perfíl</a>
+					</li>
+					<li>
+						<a href="{% url 'product-list' %}" class="hover:dark:text-gray-400">Mis Productos</a>
+					</li>
+				</ul>
+			</div>
+			{% else %}
+			<div class="col-span-6 text-center md:text-left md:col-span-3 mt-8">
+				<p class="pb-1 text-lg font-medium">Cuenta</p>
+				<ul>
+					<li>
+						<a href="{% url 'account_login' %}" class="hover:dark:text-gray-400">Inicia Sesión</a>
+					</li>
+					<li>
+						<a href="{% url 'account_signup' %}" class="hover:dark:text-gray-400">Registrate</a>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+			<div class="col-span-6 text-center md:text-left md:col-span-3 mt-8">
+				<p class="pb-1 text-lg font-medium">Sobre Nosotros</p>
+				<ul>
+					<li>
+						<a href="#" class="hover:dark:text-gray-400">Acerca de</a>
+					</li>
+					<li>
+						<a href="#" class="hover:dark:text-gray-400">Preguntas Frecuentes</a>
+					</li>
+					<li>
+				</ul>
+			</div>
+		</div>
+		<div class="grid justify-center pt-6 lg:justify-between">
+			<div class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
+				<span>©2022 Todos los derechos reservados</span>
+				<a href="#">
+					<span>Terminos de Servicio</span>
+				</a>
+				<a href="#">
+					<span>Desarrollado por Federico Pintos</span>
+				</a>
+			</div>
+			<div class="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
+				<a href="mailto:federicopintos.dev@gmail.com" title="Email"
+					class="flex items-center justify-center w-10 h-10 rounded-full">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
+						<path d="M18.73,5.41l-1.28,1L12,10.46,6.55,6.37l-1.28-1A2,2,0,0,0,2,7.05V18.64A1.36,1.36,0,0,0,3.36,20H6.55V12.28L12,16.37l5.45-4.09V20h3.19A1.36,1.36,0,0,0,22,18.64V7.05A2,2,0,0,0,18.73,5.41Z"></path>
+					</svg>
+				</a>
+				<a href="https://www.linkedin.com/in/federico-pintos/" title="Linkedin" target="_blank"
+					class="flex items-center justify-center w-10 h-10 rounded-full">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><circle cx="4.983" cy="5.009" r="2.188"></circle>
+						<path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path>
+					</svg>
+				</a>
+				<a href="https://github.com/fedeuhr" title="GitHub" target="_blank"
+					class="flex items-center justify-center w-10 h-10 rounded-full">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>

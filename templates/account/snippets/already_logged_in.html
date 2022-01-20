@@ -1,0 +1,5 @@
+{% load i18n %}
+{% load account %}
+
+{% user_display user as user_display %}
+<p class="my-2 text-gray-400"><strong>{% trans "Aclaración" %}:</strong> {% blocktrans %}Te encuentras Logueado como: {{ user_display }}.{% endblocktrans %}</p>

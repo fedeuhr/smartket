@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+{% load tailwind_filters %}
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+
+<div class="text-center">
+    <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+        Perfíl de {{user.username}}
+    </h2>
+</div>
+<form class="form-horizontal dark:text-dark-txt" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="bg-white-200 min-h-screen pt-2">
+        <div class="container mx-auto">
+            <div class="inputs w-full max-w-2xl p-6 mx-auto">
+                <div class="flex justify-center">
+                    <img class="rounded-lg w-48 h-48" src="{{user.profile.picture.url}}"
+                        onerror="this.onerror=null; this.src='../../media/user/default_user.jpg'" alt="" />
+                </div>
+                <div class="flex text-center flex-wrap -mx-3 mb-6 mt-3">
+                    <div class="w-full md:w-full px-3 mb-6">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="grid-text-1">Dirección de Email</label>
+                        <label class="block tracking-wide text-gray-500 text-sm font-bold mb-2"
+                            for="grid-text-1">{{user.email}}</label>
+                    </div>
+                    <div class="personal w-full border-t border-gray-400 pt-4">
+                        <h2 class="text-2xl text-gray-900">Información Personal:</h2>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="w-full md:w-1/2 px-3 mb-6">
+                                <label
+                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Nombre</label>
+                                <label
+                                    class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none focus:border-gray-500">{{user.first_name}}</label>
+                            </div>
+                            <div class="w-full md:w-1/2 px-3 mb-6">
+                                <label
+                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Apellido</label>
+                                <label
+                                    class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none focus:border-gray-500">{{user.last_name}}</label>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Nombre de
+                                Usuario</label>
+                            <label
+                                class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none focus:border-gray-500">{{user.username}}</label>
+                        </div>
+                        <div class="flex justify-center">
+                            <a class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3"
+                                href="{% url 'users:edit-profile' %}">Editar Perfíl</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}
+{% block javascript %}
+{% endblock javascript %}

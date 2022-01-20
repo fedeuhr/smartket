@@ -1,0 +1,12 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verifica dirección email" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Verifica dirección email" %}</h1>
+
+    <p>{% blocktrans %}Se ha enviado un email a tu casilla de correo, por favor abra el mensaje para poder verificar su cuenta.{% endblocktrans %}</p>
+
+{% endblock %}
