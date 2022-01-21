@@ -75,6 +75,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'twilio_notifications.middleware.TwilioNotificationsMiddleware',
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
 ]
 
 ROOT_URLCONF = 'core.urls'
