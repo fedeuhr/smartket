@@ -3,6 +3,9 @@ import os
 import environment
 from environ import Env
 
+import django_heroku
+import dj_database_url
+
 env = Env()
 
 env.read_env()
@@ -178,3 +181,4 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
